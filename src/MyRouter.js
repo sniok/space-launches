@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Route, Link, HashRouter } from "react-router-dom";
 
 import App from "./App";
 import LaunchPage from "./LaunchPage";
@@ -7,7 +7,7 @@ import LaunchPage from "./LaunchPage";
 class MyRouter extends Component {
   render() {
     return (
-      <Router>
+      <HashRouter>
         <div>
           <div className="header">
             <Link to="/">Launches</Link>
@@ -15,7 +15,7 @@ class MyRouter extends Component {
           <Route exact path="/" component={App} />
           <Route path="/launch/:id" component={LaunchPage} />
         </div>
-      </Router>
+      </HashRouter>
     );
   }
 }

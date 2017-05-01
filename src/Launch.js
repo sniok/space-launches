@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import moment from "moment";
 import Flag from "react-flags";
 import CountdownTimer from "./CountdownTimer";
+import { Route, Link, HashRouter } from "react-router-dom";
 
 class Launch extends Component {
   renderAgencies = ag => {
@@ -74,7 +75,7 @@ class Launch extends Component {
         </div>
         <div className="launch-meta">
           <div className="launch-meta-title">
-            <a href={`/launch/${id}`}> {this.mapMissions(missions)}</a>
+            <Link to={`/launch/${id}`}>{this.mapMissions(missions)}</Link>
             <span style={{ float: "right" }}>
               {launchDate.format("D MMMM Y HH:mm")}
             </span>
