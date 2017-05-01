@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import App from "./App";
+import LaunchPage from "./LaunchPage";
 
 class MyRouter extends Component {
   render() {
@@ -11,7 +12,8 @@ class MyRouter extends Component {
           <div className="header">
             <Link to="/">Launches</Link>
           </div>
-          <Route path="/" component={App} />
+          <Route exact path="/" component={App} />
+          <Route path="/launch/:id" component={LaunchPage} />
         </div>
       </Router>
     );

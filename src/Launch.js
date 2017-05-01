@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import moment from "moment";
 import Flag from "react-flags";
+import CountdownTimer from "./CountdownTimer";
 
 class Launch extends Component {
   renderAgencies = ag => {
@@ -13,7 +14,17 @@ class Launch extends Component {
       }
       return (
         <a href={a.wikiURL}>
-          {flags.map(flag => <Flag name={flag} format="png" pngSize={16} />)}
+          {flags.map(flag => (
+            <img
+              src={
+                process.env.PUBLIC_URL +
+                  "/img/flags/flags-iso/flat/16/" +
+                  flag[0] +
+                  flag[1] +
+                  ".png"
+              }
+            />
+          ))}
           {a.name}
         </a>
       );
@@ -36,10 +47,20 @@ class Launch extends Component {
     const nes = `${base}_${list[0]}.${ext}`;
     return nes;
   };
+
+  mapLinks = vidURLs => {
+    return vidURLs.map(url => {
+      let title = "Info";
+      if (url.indexOf("youtube") > -1) {
+        title = "Youtube stream";
+      }
+      return <a className="launch-link" href={url}>{title}</a>;
+    });
+  };
   render() {
     const now = moment();
     const launchDate = moment(this.props.data.isonet);
-    const { rocket, missions } = this.props.data;
+    const { id, rocket, missions, vidURLs } = this.props.data;
     return (
       <div className="launch">
         <div className="launch-rocket">
@@ -48,19 +69,19 @@ class Launch extends Component {
           </div>
           <img
             src={this.replaceImage(rocket.imageURL, rocket.imageSizes)}
-            width="200px"
             alt={rocket.name}
           />
         </div>
         <div className="launch-meta">
           <div className="launch-meta-title">
-            {this.mapMissions(missions)}
+            <a href={`/launch/${id}`}> {this.mapMissions(missions)}</a>
             <span style={{ float: "right" }}>
               {launchDate.format("D MMMM Y HH:mm")}
             </span>
           </div>
           <div className="launch-desc">
             <div className="launch-tags">
+              {this.mapLinks(vidURLs)}
               <span className="launch-agencies">
                 {this.renderAgencies(rocket.agencies)}
               </span>
@@ -77,8 +98,9 @@ class Launch extends Component {
                 </section>
               : ""}
 
-            <b>Time until launch – </b>
-            {launchDate.diff(now, "hours")} hours
+            <b>Time until launch</b>
+
+            <CountdownTimer initialTimeRemaining={launchDate.diff(now)} />
             <br />
           </div>
         </div>

@@ -4,6 +4,11 @@ const api = {
     const r = await fetch(root + "/launch?mode=verbose");
     const o = await r.json();
     return o;
+  },
+  launch: async id => {
+    const r = await fetch(root + "/launch/" + id + "?mode=verbose");
+    const o = await r.json();
+    return o;
   }
 };
 

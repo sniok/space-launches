@@ -56,8 +56,27 @@ body {
   width: 200px;
 }
 
+.launch-meta-title a {
+  text-decoration: none;
+  color: #333;
+}
+
 .launch-rocket img {
   display: block;
+  width: 200px;
+}
+
+@media screen and (max-width: 480px) {
+  .launch-rocket {
+    display: block;
+    width: 100%;
+  }
+  .launch-meta {
+    display: block;
+  }
+  .launch-rocket img {
+    width: 100%;
+  }
 }
 
 .launch-rocket-name {
@@ -70,7 +89,9 @@ body {
   line-height: 50px;
 }
 
-.launch-agencies span {}
+.timer {
+  font-size: 24px;
+}
 
 .launch-agencies img {
   margin: -3px 4px;
@@ -111,4 +132,15 @@ body {
 .launch-rocket-name a {
   color: #FFF;
   text-decoration: none;
+}
+
+.launch-link {
+  background-color: #929;
+  text-decoration: none;
+  color: #FFF;
+  padding: 4px 7px;
+  border-radius: 3px;
+  font-size: 13px;
+  margin: 0 5px 5px 0;
+  float: left;
 }
