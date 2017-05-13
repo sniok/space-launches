@@ -1,0 +1,90 @@
+.launch {
+  width: calc(100% - 16px);
+  background-size: cover;
+  margin: 0px 8px 40px 8px;
+  box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.6);
+  padding: 40px 0 60px 0;
+  border-radius: 7px;
+  height: auto;
+}
+
+.launchRocket {
+  color: #FFF;
+  padding: 0 30px 0 30px;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.launchRocket::before {
+  content: "Rocket";
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 100;
+  font-size: 12px;
+  display: block;
+}
+
+.launchMission {
+  color: #FFF;
+  padding: 20px 30px 0 30px;
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.launchMission::before {
+  content: "Mission";
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 100;
+  margin-left: 0px;
+  font-size: 12px;
+  display: block;
+}
+
+.launchWhen {
+  color: #FFF;
+  padding: 20px 30px 0 30px;
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.launchWhen::before {
+  content: "When";
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 100;
+  margin-left: 0px;
+  font-size: 12px;
+  display: block;
+}
+
+.launchDesc {
+  color: #FFF;
+  padding: 20px 30px 0 30px;
+  font-weight: 100;
+  line-height: 1.4;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8)
+}
+
+.launchMore>a {
+  background-color: rgba(255, 255, 255, 0.08);
+  float: right;
+  padding: 10px 20px;
+  margin-right: 30px;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+}
+
+.launch a {
+  text-decoration: none;
+}
+
+.datLine {
+  width: calc(100% - 40px);
+  height: 1px;
+  margin: 20px auto;
+  background-color: rgba(255, 255, 255, 0.15);
+}

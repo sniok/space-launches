@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { Route, Link, HashRouter } from "react-router-dom";
 
-import App from "./App";
-import LaunchPage from "./LaunchPage";
+import LaunchesPage from "./Launches/LaunchesPage";
+import RocketPage from "./Rocket/RocketPage";
+import LaunchPage from "./Launch/LaunchPage";
 
 class MyRouter extends Component {
   render() {
@@ -10,10 +11,11 @@ class MyRouter extends Component {
       <HashRouter>
         <div>
           <div className="header">
-            <Link to="/">Launches</Link>
+            <Link to="/">Space Launches</Link>
           </div>
-          <Route exact path="/" component={App} />
+          <Route exact path="/" component={LaunchesPage} />
           <Route path="/launch/:id" component={LaunchPage} />
+          <Route path="/rocket/:id" component={RocketPage} />
         </div>
       </HashRouter>
     );

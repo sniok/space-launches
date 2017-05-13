@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import api from "./Api";
+import api from "../apis/LaunchLibrary";
 import "./launchpage.css";
 import moment from "moment";
-import CountdownTimer from "./CountdownTimer";
+import CountdownTimer from "../CountdownTimer";
 
 class LaunchPage extends Component {
   constructor() {
@@ -19,19 +19,20 @@ class LaunchPage extends Component {
   render() {
     const { id } = this.props.match.params;
     const l = this.state.launch;
-
     return (
       <div className="container">
         {this.state.launch
           ? <div>
-              <h1>{l.name}</h1>
+              <h1 style={{ textAlign: "center" }}>{l.name}</h1>
               {l.vidURLs[0] ? <Stream url={l.vidURLs[0]} /> : ""}
               <div className="rocket-timer">
+                Countdown
                 <CountdownTimer
                   initialTimeRemaining={moment(l.isonet).diff(moment())}
                 />
               </div>
-              <h3>Rocket</h3>
+              {l.missions.map(m => <Mission mission={m} />)}
+
               <RocketCard rocket={l.rocket} />
             </div>
           : "Loading"}
@@ -48,16 +49,23 @@ const RocketCard = ({ rocket }) => {
     const nes = `${base}_${list[0]}.${ext}`;
     return nes;
   };
+  const getImageStyle = image => {
+    let url = image;
+    if (image.indexOf("placeholder") > -1) {
+      return `linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.86) )`;
+    }
+    return `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6) ), url(${url})`;
+  };
   return (
-    <div className="rocket-card">
-
-      <img
-        src={replaceImage(rocket.imageURL, rocket.imageSizes)}
-        width="200px"
-      />
-      <div className="rocket-card-title">
-        {rocket.name}
+    <div
+      className="rocket-card"
+      style={{ backgroundImage: getImageStyle(rocket.imageURL) }}
+    >
+      <div className="launchRocket">{rocket.name}</div>
+      <div className="rocketMadeBy">
+        {rocket.agencies.map(a => a.name).join(", ")}
       </div>
+      <div className="datLine" />
       <div className="rocket-card-meta">
         <a className="button rocket-info" href={rocket.infoURL}>Website</a>
         <a className="button rocket-wiki" href={rocket.wikiURL}>Wiki</a>
@@ -82,6 +90,18 @@ const Stream = ({ url }) => {
     );
   }
   return <div />;
+};
+
+const Mission = ({ mission }) => {
+  return (
+    <div>
+      <div className="mission">
+        <div className="missionName">{mission.name}</div>
+        <div className="missionType">{mission.typeName}</div>
+        <div className="missionDesc">{mission.description}</div>
+      </div>
+    </div>
+  );
 };
 
 export default LaunchPage;

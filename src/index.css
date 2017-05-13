@@ -2,6 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-color: #e0e0ee;
 }
 
 * {
@@ -9,84 +10,31 @@ body {
 }
 
 .header {
-  height: 50px;
-  line-height: 50px;
+  height: 60px;
+  line-height: 60px;
   padding: 0 20px;
   width: 100%;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
+  /*background-color: #14141f;*/
+  /*background-color: #FFF;*/
+  font-weight: 700;
+  font-size: 18px;
 }
 
 .header>* {
   display: inline-block;
+  color: #FFF;
+  text-decoration: none;
   margin: 0 10px;
 }
 
 .container {
   max-width: 780px;
   width: 100%;
-  margin: 0 auto;
-}
-
-.launch {
-  background-color: #EEE;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-  margin: 20px 0;
-}
-
-.launch-meta {
-  background-color: #FFF;
-  width: 100%;
-  display: table-cell;
-}
-
-.launch-meta-title {
-  font-size: 13px;
-  padding: 0 10px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  font-weight: 700;
-  font-size: 16px;
-  color: #333;
-  height: 50px;
-  line-height: 50px;
-}
-
-.launch-rocket {
-  display: table-cell;
-  background-size: 200px;
-  width: 200px;
-}
-
-.launch-meta-title a {
-  text-decoration: none;
-  color: #333;
-}
-
-.launch-rocket img {
-  display: block;
-  width: 200px;
-}
-
-@media screen and (max-width: 480px) {
-  .launch-rocket {
-    display: block;
-    width: 100%;
-  }
-  .launch-meta {
-    display: block;
-  }
-  .launch-rocket img {
-    width: 100%;
-  }
-}
-
-.launch-rocket-name {
-  text-align: center;
-  font-size: 13px;
-  background-color: #333;
-  border-bottom: 1px solid #000;
-  color: #FFF;
-  height: 50px;
-  line-height: 50px;
+  margin: 80px auto;
 }
 
 .timer {

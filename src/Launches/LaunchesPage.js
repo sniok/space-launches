@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import api from "./Api";
+import api from "../apis/LaunchLibrary";
 import Launch from "./Launch";
 
-class App extends Component {
+class LaunchesPage extends Component {
   constructor() {
     super();
     this.state = {
@@ -25,7 +25,6 @@ class App extends Component {
     return (
       <div>
         <div className="container">
-          <h1>Launches</h1>
           {this.renderLaunches()}
           {this.state.launches.length ? "" : "Loading..."}
         </div>
@@ -34,4 +33,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default LaunchesPage;
