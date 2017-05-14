@@ -16,6 +16,15 @@ class MyRouter extends Component {
           <Route exact path="/" component={LaunchesPage} />
           <Route path="/launch/:id" component={LaunchPage} />
           <Route path="/rocket/:id" component={RocketPage} />
+          <div id="footer">
+            API provided by
+            {" "}
+            <a href="https://launchlibrary.net/">LaunchLibrary</a>
+            {" "}
+            | Images by
+            {" "}
+            <a href="https://unsplash.com/license">UnSplash</a>
+          </div>
         </div>
       </HashRouter>
     );

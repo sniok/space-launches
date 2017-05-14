@@ -17,7 +17,6 @@ class LaunchPage extends Component {
   }
 
   render() {
-    const { id } = this.props.match.params;
     const l = this.state.launch;
     return (
       <div className="container">
@@ -31,35 +30,39 @@ class LaunchPage extends Component {
                   initialTimeRemaining={moment(l.isonet).diff(moment())}
                 />
               </div>
-              {l.missions.map(m => <Mission mission={m} />)}
-
+              {l.missions.map(m => <Mission key={m.id} mission={m} />)}
               <RocketCard rocket={l.rocket} />
+              {l.rocket.agencies.map(a => <Agency key={a.id} agency={a} />)}
+              {l.location.pads.map(p => <Pad key={p.id} pad={p} />)}
             </div>
           : "Loading"}
-        {/*<pre>{JSON.stringify(this.state, null, 2)}</pre>*/}
       </div>
     );
   }
 }
 
+const getImageStyle = () => {
+  let url =
+    "https://source.unsplash.com/collection/146098/random?sig=" +
+    ~~(Math.random() * 100);
+
+  return `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6) ), url(${url})`;
+};
+
 const RocketCard = ({ rocket }) => {
-  const replaceImage = (image, list) => {
-    const ext = image.split(".").pop();
-    const base = image.split("_").shift();
-    const nes = `${base}_${list[0]}.${ext}`;
-    return nes;
-  };
-  const getImageStyle = image => {
+  const getImageStyleImg = image => {
     let url = image;
     if (image.indexOf("placeholder") > -1) {
-      return `linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.86) )`;
+      url =
+        "https://source.unsplash.com/collection/146098/random?sig=" +
+        ~~(Math.random() * 100);
     }
     return `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6) ), url(${url})`;
   };
   return (
     <div
       className="rocket-card"
-      style={{ backgroundImage: getImageStyle(rocket.imageURL) }}
+      style={{ backgroundImage: getImageStyleImg(rocket.imageURL) }}
     >
       <div className="launchRocket">{rocket.name}</div>
       <div className="rocketMadeBy">
@@ -80,11 +83,12 @@ const Stream = ({ url }) => {
     return (
       <div style={{ textAlign: "center" }}>
         <iframe
-          width="560"
-          height="315"
+          width={document.getElementsByClassName("container")[0].clientWidth}
+          height="415"
           src={`https://www.youtube.com/embed/${id}`}
-          frameborder="0"
-          allowfullscreen
+          frameBorder="0"
+          id="ytfr"
+          allowFullScreen
         />
       </div>
     );
@@ -94,11 +98,36 @@ const Stream = ({ url }) => {
 
 const Mission = ({ mission }) => {
   return (
-    <div>
-      <div className="mission">
-        <div className="missionName">{mission.name}</div>
-        <div className="missionType">{mission.typeName}</div>
-        <div className="missionDesc">{mission.description}</div>
+    <div className="mission" style={{ backgroundImage: getImageStyle() }}>
+      <div className="missionName">{mission.name}</div>
+      <div className="missionType">{mission.typeName}</div>
+      <div className="missionDesc">{mission.description}</div>
+    </div>
+  );
+};
+
+const Agency = ({ agency }) => {
+  return (
+    <div className="card" style={{ backgroundImage: getImageStyle() }}>
+      <div className="agencyName">{agency.name}</div>
+      <div className="agencyCountry">{agency.countryCode}</div>
+      <div className="datLine" />
+      <div className="rocket-card-meta">
+        <a className="button rocket-info" href={agency.infoURL}>Website</a>
+        <a className="button rocket-wiki" href={agency.wikiURL}>Wiki</a>
+      </div>
+    </div>
+  );
+};
+
+const Pad = ({ pad }) => {
+  return (
+    <div className="card" style={{ backgroundImage: getImageStyle() }}>
+      <div className="padName">{pad.name}</div>
+      <div className="datLine" />
+      <div className="rocket-card-meta">
+        <a className="button rocket-info" href={pad.wikiURL}>Wiki</a>
+        <a className="button rocket-wiki" href={pad.mapURL}>Map</a>
       </div>
     </div>
   );

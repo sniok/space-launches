@@ -11,7 +11,7 @@
   background-color: rgba(255, 255, 255, 0.08);
   float: right;
   padding: 10px 20px;
-  margin-right: 10px;
+  margin-left: 10px;
   font-size: 16px;
   color: rgba(255, 255, 255, 0.8);
   text-transform: uppercase;
@@ -19,7 +19,7 @@
 }
 
 .rocket-card-meta {
-  padding: 0 30px 30px 10px;
+  padding: 0 30px 30px 30px;
 }
 
 .rocketMadeBy {
@@ -66,6 +66,7 @@
   text-transform: uppercase;
   color: rgba(0, 0, 0, 0.7);
   background: rgba(0, 0, 0, 0.8);
+  background-size: cover;
 }
 
 .missionName {
@@ -107,8 +108,9 @@
   margin-top: 20px;
   padding: 0 30px 0 30px;
   font-weight: 100;
-  font-size: 17px;
-  color: rgba(255, 255, 255, 1);
+  font-size: 14px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.8);
   text-transform: none;
 }
 
@@ -116,6 +118,73 @@
   content: "description";
   color: rgba(255, 255, 255, 0.8);
   font-weight: 100;
+  font-size: 12px;
+  display: block;
+  text-transform: uppercase
+}
+
+.card {
+  width: calc(100% - 16px);
+  padding: 40px 0;
+  border-radius: 7px;
+  margin: 20px auto;
+  color: #FFF;
+  background: rgba(0, 0, 0, 0.9);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+  background-size: cover;
+}
+
+.agencyName {
+  color: #FFF;
+  padding: 0 30px 0 30px;
+  font-weight: 700;
+  font-size: 32px;
+  color: rgba(255, 255, 255, 1);
+  text-transform: none;
+}
+
+.agencyName::before {
+  content: "agency";
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 100;
+  font-size: 12px;
+  display: block;
+  text-transform: uppercase
+}
+
+.agencyCountry {
+  color: #FFF;
+  padding: 0 30px 0 30px;
+  margin-top: 20px;
+  font-weight: 700;
+  font-size: 24px;
+  color: rgba(255, 255, 255, 1);
+  text-transform: none;
+}
+
+.agencyCountry::before {
+  content: "country";
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
+  font-size: 12px;
+  display: block;
+  text-transform: uppercase
+}
+
+.padName {
+  color: #FFF;
+  padding: 0 30px 0 30px;
+  margin-top: 0px;
+  font-weight: 700;
+  font-size: 24px;
+  color: rgba(255, 255, 255, 1);
+  text-transform: none;
+}
+
+.padName::before {
+  content: "Launch pad";
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
   font-size: 12px;
   display: block;
   text-transform: uppercase

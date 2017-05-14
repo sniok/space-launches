@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import moment from "moment";
-import Flag from "react-flags";
-import CountdownTimer from "../CountdownTimer";
-import { Route, Link, HashRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import "./Launch.css";
 
@@ -38,7 +36,8 @@ class Launch extends Component {
   getImageStyle = (image, sizes) => {
     let url = image;
     if (image.indexOf("placeholder") > -1) {
-      url = "https://source.unsplash.com/collection/235/random?sig=" +
+      url =
+        "https://source.unsplash.com/collection/146098/random?sig=" +
         ~~(Math.random() * 100);
     } else {
       url = this.replaceImage(url, sizes);
@@ -47,10 +46,8 @@ class Launch extends Component {
   };
 
   render() {
-    const now = moment();
     const launchDate = moment(this.props.data.isonet);
-    const { id, rocket, missions, vidURLs } = this.props.data;
-    console.log(rocket);
+    const { id, rocket, missions } = this.props.data;
     return (
       <div
         className="launch"
